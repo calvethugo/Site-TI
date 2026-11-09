@@ -3,7 +3,7 @@
   --line:rgba(239,232,194,.16);--yellow:#e8d34b;--orange:#d8873e;--green:#91a67b;
   --mono:"IBM Plex Mono",monospace;--display:"Barlow Condensed",sans-serif;--body:"Inter",sans-serif;
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+*{box-sizing:border-box}html{scroll-behavior:auto;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(232,211,75,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(232,211,75,.025) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 82%)}
 .scanlines{position:fixed;inset:0;pointer-events:none;z-index:10;opacity:.12;background:repeating-linear-gradient(to bottom,transparent 0,transparent 3px,rgba(0,0,0,.3) 4px)}
 a{color:inherit;text-decoration:none}.section-wrap{width:min(1160px,calc(100% - 64px));margin-inline:auto}.topbar{height:84px;padding:0 max(32px,calc((100vw - 1160px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(16,17,13,.92);position:sticky;top:0;z-index:20;backdrop-filter:blur(14px)}
@@ -30,3 +30,114 @@ h1,h2,h3,p{margin-top:0}.hero h1{font:800 clamp(68px,9vw,118px)/.84 var(--displa
 .contact{padding-top:70px;padding-bottom:75px;display:block}.contact-mark{display:none}.contact-actions{flex-direction:column;align-items:stretch}.contact-actions .button{justify-content:space-between}.footer{padding:22px 19px;flex-wrap:wrap;font-size:7px}.footer>span{order:3;width:100%}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+/* =========================================
+   04 — HUGO DIGITAL ARCHIVE
+========================================= */
+
+.web-art {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 290px;
+  aspect-ratio: 1.1 / 1;
+  overflow: hidden;
+  border: 1px solid rgba(145, 166, 123, .65);
+  background:
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(83, 111, 72, .13),
+      transparent 65%
+    ),
+    #0d1510;
+  isolation: isolate;
+  transition: border-color .3s, transform .3s;
+}
+
+.web-art:hover {
+  border-color: #a6c58b;
+  transform: translateY(-4px);
+}
+
+/* Grade em perspectiva */
+
+.web-art-grid {
+  position: absolute;
+  inset: 17% -15% -20%;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(145,166,123,.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(145,166,123,.16) 1px, transparent 1px);
+  background-size: 34px 34px;
+  transform: perspective(280px) rotateX(48deg) scale(1.3);
+  transform-origin: center bottom;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 85%, transparent);
+}
+
+/* Círculos centrais */
+
+.web-disc {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.disc-one {
+  width: 57%;
+  border: 1px solid #a4c58a;
+  box-shadow: 0 0 25px rgba(145,166,123,.08);
+}
+
+.disc-two {
+  width: 40%;
+  border: 1px dashed #a4c58a;
+  opacity: .85;
+}
+
+/* Título */
+
+.web-art-label {
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  z-index: 2;
+  color: #e8eadb;
+  font: 800 clamp(24px, 3vw, 30px)/.88
+    "Barlow Condensed", sans-serif;
+  letter-spacing: -.025em;
+}
+
+.web-art-label span {
+  display: inline-block;
+  margin-left: 7px;
+  color: #a4c58a;
+  font: 16px "IBM Plex Mono", monospace;
+  vertical-align: middle;
+}
+
+/* Identificação inferior */
+
+.web-art small {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  color: #a4c58a;
+  font: 7px "IBM Plex Mono", monospace;
+  letter-spacing: -.03em;
+}
+
+/* Responsividade */
+
+@media(max-width: 680px) {
+  .web-art {
+    min-height: 260px;
+    aspect-ratio: 1.1 / 1;
+  }
+
+  .web-art-label {
+    font-size: 27px;
+  }
+}
